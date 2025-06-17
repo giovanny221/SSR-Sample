@@ -1,0 +1,16 @@
+services:
+  ssr-project:
+    build: ./ssr-project
+    ports:
+      - "4000:4000"
+  csr-project:
+    build: ./csr-project
+    ports:
+      - "4001:4001"
+  nginx:
+    build: ./ssr-project/nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - ssr-project
+      - csr-project

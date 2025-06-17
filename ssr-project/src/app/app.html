@@ -1,0 +1,24 @@
+<h1>{{ "app.welcome"  | transloco }}</h1>
+
+<button (click)="changeLanguage('es')">{{ "app.spanish.button.title" | transloco }}</button>
+<button (click)="changeLanguage('en')">{{ "app.english.button.title" | transloco }}</button>
+<button (click)="changeLanguage('de')">{{ "app.deutsch.button.title" | transloco }}</button>
+
+<br/><br/>
+
+<p>{{ "app.description" | transloco }}</p>
+
+<br/><br/>
+
+<input type="text" [ngModel]="todoElement | async" style="width: 300px;"/>
+<br/>
+<button (click)="getTodo('10')">Get TODO 10</button>
+<button (click)="getTodo('20')">Get TODO 20</button>
+<button (click)="getTodo('20000')">Get TODO 20000</button>
+
+<ul>
+  @for (todo of todos$ | async; track todo.title) {
+    <li>{{ todo.title }}</li>
+  }
+</ul>
+
