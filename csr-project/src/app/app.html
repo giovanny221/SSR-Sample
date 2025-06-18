@@ -1,3 +1,31 @@
 <h1>CSR Project</h1>
 
-<button (click)="redirectToSSR()">redirect to SSR Project</button>
+<br>
+<br>
+<a href="http://localhost:4000">A simple HREF</a>
+
+<br>
+<br>
+
+<form method="post" action="http://localhost">
+  <input type="hidden" name="assessmentToken" value="<assessmentToken>"/>
+  <input type="hidden" name="msitat" value="<msitat>"/>
+  <input type="hidden" name="selectedSymptomsOfUser" value="<mainSymptomCode>, <relat
+edSymptomsCodes>"/>
+  <input type="hidden" name="TimeToTreat" value="<timetotreat"/> <input type="hidden"
+                                                                        name="PointOfCare"
+                                                                        value="pointofcare"/>
+  <button type="submit">Submit the hidden form :) port 80</button>
+</form>
+<br>
+<br>
+
+<form method="post" action="http://localhost:4000">
+  <input type="hidden" name="assessmentToken" value="ABC123"/>
+  <input type="hidden" name="msitat" value="MSITAT"/>
+  <input type="hidden" name="selectedSymptomsOfUser" value="C12, B233"/>
+  <input type="hidden" name="TimeToTreat" value="AMBULANZ"/> <input type="hidden"
+                                                                        name="PointOfCare"
+                                                                        value="HOSPITAL"/>
+  <button type="submit">Submit the hidden form :) port: 4000</button>
+</form>

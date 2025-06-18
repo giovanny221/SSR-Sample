@@ -1,16 +1,22 @@
 services:
+
   ssr-project:
     build: ./ssr-project
     ports:
       - "4000:4000"
+    networks:
+      - backend
   csr-project:
     build: ./csr-project
     ports:
-      - "4001:4001"
-  nginx:
+      - "4001:80"
+  reverse-proxy:
     build: ./ssr-project/nginx
+    networks:
+      - backend
     ports:
       - "80:80"
-    depends_on:
-      - ssr-project
-      - csr-project
+
+networks:
+  backend:
+    driver: bridge # default, talk to other containers

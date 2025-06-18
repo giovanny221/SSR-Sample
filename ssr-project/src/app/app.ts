@@ -1,6 +1,6 @@
 import {AsyncPipe, isPlatformBrowser, isPlatformServer} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
-import {afterNextRender, Component, inject, PLATFORM_ID} from '@angular/core';
+import {afterNextRender, Component, inject, PLATFORM_ID, REQUEST} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TranslocoPipe, TranslocoService} from '@jsverse/transloco';
 import {map, tap} from 'rxjs';
@@ -23,7 +23,7 @@ export class App {
 
   todos$ = this.#http.get<{title: string}[]>(this.TODO_URL)
     .pipe(tap(result => {
-      console.log('Loaded from the template, all TODOS: ', result);
+      console.log('Loaded from the template, all TODOS: ');
     }));
 
   todoElement = this.#http.get<{title: string}>(this.TODO_URL + '/1')
@@ -32,6 +32,12 @@ export class App {
     );
 
   constructor() {
+    const request = inject(REQUEST);
+    console.log(request?.url);
+    console.log(request);
+    request?.text().then(foo => console.log(foo));
+
+
     this.#http.get<{title: string}>(this.TODO_URL + '/1')
       .subscribe(result => {
         console.log('Loaded from constructor, todo 1: ', result)
